@@ -1,0 +1,28 @@
+body {
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+    color: #00B7FF;
+}
+
+.navBardemoBasicUsage md-content .ext-content {
+    padding: 50px;
+    margin: 20px;
+    background-color: #FFF2E0;
+}
+
+.heart {
+    color: red;
+}
+
+#footer {
+    border-top: 1px solid #c5c5c5;
+    color: #c5c5c5;
+    font: 16px/1 kefa, 'droid sans', georgia, serif;
+    margin: 0 auto;
+    padding: 50px 0;
+    text-align: center;
+    width: 960px;
+}
