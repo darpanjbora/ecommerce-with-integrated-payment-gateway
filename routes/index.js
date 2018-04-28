@@ -10,6 +10,7 @@ paypal.configure({
     'client_secret': process.env.CLIENT_SECRET
 });
 
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
     res.render('index');
@@ -21,7 +22,29 @@ router.get('/:id/payment', function(req, res, next) {
 });
 
 router.get('/success', function(req, res, next) {
-    res.render('success');
+
+
+    const payerId = req.query.PayerID;
+    const paymentId = req.query.paymentId;
+
+    var execute_payment_json = {
+        "payer_id": payerId,
+        "transactions": [{
+            "amount": {
+                "currency": "INR",
+                "total": "1.00"
+            }
+        }]
+    };
+
+    paypal.payment.execute(paymentId, execute_payment_json, function(error, payment) {
+        if (error) {
+            console.log(error.response);
+            throw error;
+        } else {
+            res.render('success', { payment: payment });
+        }
+    });
 })
 
 router.post('/pay', function(req, res, next) {

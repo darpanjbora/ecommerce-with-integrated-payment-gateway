@@ -17,6 +17,14 @@ a {
     color: red;
 }
 
+.check {
+    color: green;
+}
+
+HTMLJSCSS .carddemoBasicUsage .card-media {
+    background-color: #999999;
+}
+
 #footer {
     border-top: 1px solid #c5c5c5;
     color: #c5c5c5;

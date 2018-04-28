@@ -1,5 +1,11 @@
 angular.module('mainApp', ['ngMaterial', 'ngMessages'])
-    .controller('AppCtrl', AppCtrl);
+    .controller('AppCtrl', AppCtrl)
+    .config(function($mdThemingProvider) {
+        $mdThemingProvider.theme('dark-grey').backgroundPalette('grey').dark();
+        $mdThemingProvider.theme('dark-orange').backgroundPalette('orange').dark();
+        $mdThemingProvider.theme('dark-purple').backgroundPalette('deep-purple').dark();
+        $mdThemingProvider.theme('dark-blue').backgroundPalette('blue').dark();
+    });
 
 function AppCtrl($scope, $mdToast, $mdDialog, $window, $http) {
 
@@ -26,9 +32,13 @@ function AppCtrl($scope, $mdToast, $mdDialog, $window, $http) {
         }
 
         $http({
-            url: 'https://course-store.herokuapp.com/pay',
+            url: 'https://course-store.herokuapp.com/',
             method: 'POST',
-            data: userDetails
+            data: userDetails,
+            withCredentials: true,
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8'
+            }
         }).then(function(httpResponse) {
             console.log('response:', httpResponse);
         })

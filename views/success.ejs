@@ -1,1 +1,53 @@
-<h3>PAYMENT SUCCESSFULL</h3>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Angular Material style sheet -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <title>E-Commerce</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body ng-app="mainApp" ng-cloak>
+
+    <h1 style="text-align: center">PAYMENT SUCCESSFULL <i class="fa fa-check check" aria-hidden="true"></i></h1>
+
+    <div ng-controller="AppCtrl" flex-xs flex-gt-xs="100" layout="column">
+        <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Hello <%= payment.payer.payer_info.first_name%> <%= payment.payer.payer_info.last_name%> ! Thank you for purchasing the course.</span>
+                    </br>
+                    <span class="md-subhead">Your Email id : <%= payment.payer.payer_info.email %></span>
+                    <span class="md-subhead">Your payment id : <%= payment.id %></span>
+                    <span class="md-subhead">Total amount : <%= payment.transactions[0].amount.total %> <%= payment.transactions[0].amount.currency%></span>
+                </md-card-title-text>
+                <md-card-title-media>
+                    <div class="md-media-lg card-media"></div>
+                </md-card-title-media>
+            </md-card-title>
+            <md-card-actions layout="row" layout-align="center">
+                <md-button class="md-raised md-primary">Email receipt</md-button>
+            </md-card-actions>
+            </br>
+        </md-card>
+    </div>
+    </br>
+    <footer id="footer">
+        <p>Developed with <i class="fa fa-heart heart" aria-hidden="true"></i> by Darpan Jyoti Bora © 2018</p>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js "></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.min.js "></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-aria.min.js "></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-messages.min.js "></script>
+
+    <!-- Angular Material Library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.js "></script>
+
+    <script type="text/javascript " src="/javascripts/admin.controller.js "></script>
+</body>
+
+</html>

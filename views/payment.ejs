@@ -45,37 +45,36 @@
             </h2>
             <h2 style="text-align: center">YOUR TOTAL AMOUNT IS : <i class="fa fa-inr"></i> 1.00</h2>
 
-            <div layout="column" layout-padding ng-cloak>
-                <br/>
-                <md-content class="md-no-momentum">
-                    <md-input-container class="md-icon-float md-block">
-                        <!-- Use floating label instead of placeholder -->
-                        <md-icon md-svg-src="/images/icons/ic_perm_identity_black_24px.svg" class="name"></md-icon>
-                        <input ng-model="user.name" type="text" placeholder="Name" ng-required="true">
-                    </md-input-container>
+            <form action="/pay" method='POST'>
+                <div layout="column" layout-padding ng-cloak>
+                    <br/>
+                    <md-content class="md-no-momentum">
+                        <md-input-container class="md-icon-float md-block">
+                            <!-- Use floating label instead of placeholder -->
+                            <md-icon md-svg-src="/images/icons/ic_perm_identity_black_24px.svg" class="name"></md-icon>
+                            <input name="name" type="text" placeholder="Name" ng-required="true">
+                        </md-input-container>
 
-                    <md-input-container class="md-block">
-                        <md-icon md-svg-src="/images/icons/ic_phone_black_24px.svg"></md-icon>
-                        <input ng-model="user.phone" type="number" placeholder="Phone Number" ng-required="true">
-                    </md-input-container>
+                        <md-input-container class="md-block">
+                            <md-icon md-svg-src="/images/icons/ic_phone_black_24px.svg"></md-icon>
+                            <input name="phone" type="number" placeholder="Phone Number" ng-required="true">
+                        </md-input-container>
 
-                    <md-input-container class="md-block">
-                        <!-- Use floating placeholder instead of label -->
-                        <md-icon md-svg-src="/images/icons/ic_email_black_24px.svg" class="email"></md-icon>
-                        <input ng-model="user.email" type="email" placeholder="Email (required)" ng-required="true">
-                    </md-input-container>
+                        <md-input-container class="md-block">
+                            <!-- Use floating placeholder instead of label -->
+                            <md-icon md-svg-src="/images/icons/ic_email_black_24px.svg" class="email"></md-icon>
+                            <input name="email" type="email" placeholder="Email (required)" ng-required="true">
+                        </md-input-container>
 
-                    <md-input-container md-no-float class="md-block">
-                        <md-icon md-svg-src="/images/icons/ic_place_black_24px.svg" style="display:inline-block;"></md-icon>
-                        <input ng-model="user.address" type="text" placeholder="Address">
-                    </md-input-container>
-                </md-content>
+                        <md-input-container md-no-float class="md-block">
+                            <md-icon md-svg-src="/images/icons/ic_place_black_24px.svg" style="display:inline-block;"></md-icon>
+                            <input name="address" type="text" placeholder="Address">
+                        </md-input-container>
+                    </md-content>
 
-                <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-                    <md-button class="md-raised md-primary" ng-click="pay()">Pay</md-button>
-                </section>
-            </div>
-
+                    <input type="submit" value="Pay">
+                </div>
+            </form>
         </div>
     </div>
 
