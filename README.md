@@ -1,6 +1,6 @@
 # ecommerce-with-integrated-payment-gateway
 
-A E-commerce website developed on the MEAN Stack with Paypal as the payment gateway.
+An E-commerce website developed on the MEAN Stack with Paypal as the payment gateway.
 
 [![Build Status](https://travis-ci.org/darpanjbora/ecommerce-with-integrated-payment-gateway.svg?branch=master)](https://travis-ci.org/darpanjbora/ecommerce-with-integrated-payment-gateway)
 
