@@ -32,7 +32,7 @@ function AppCtrl($scope, $mdToast, $mdDialog, $window, $http) {
         }
 
         $http({
-            url: 'https://course-store.herokuapp.com/',
+            url: 'https://course-store.herokuapp.com/pay',
             method: 'POST',
             data: userDetails,
             withCredentials: true,
