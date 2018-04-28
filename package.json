@@ -13,6 +13,11 @@
     "express": "~4.15.5",
     "morgan": "~1.9.0",
     "nodemailer": "^4.6.4",
+    "nodemon": "^1.17.3",
+    "paypal-rest-sdk": "^1.8.1",
     "serve-favicon": "~2.4.5"
+  },
+  "devDependencies": {
+    "dotenv": "^5.0.1"
   }
 }

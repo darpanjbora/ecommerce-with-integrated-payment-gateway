@@ -3,7 +3,6 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
     <!-- Angular Material style sheet -->
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -37,12 +36,47 @@
 
         <!-- NAVIGATION BAR ENDS HERE -->
 
-        <h3 style="text-align: center">PAYMENT GATEWAY</h3>
-        <h4 style="text-align: center">
-            You have choose course with course id :
-            <%= id %>
-        </h4>
+        <!-- PAYMENT GATEWAY -->
+        <div class="container">
+            <h1 style="text-align: center">PayUMoney Payment Request Form </h1>
+            <h2 style="text-align: center">
+                You have choose course with course id :
+                <%= id %>
+            </h2>
+            <h2 style="text-align: center">YOUR TOTAL AMOUNT IS : <i class="fa fa-inr"></i> 1.00</h2>
 
+            <div layout="column" layout-padding ng-cloak>
+                <br/>
+                <md-content class="md-no-momentum">
+                    <md-input-container class="md-icon-float md-block">
+                        <!-- Use floating label instead of placeholder -->
+                        <md-icon md-svg-src="/images/icons/ic_perm_identity_black_24px.svg" class="name"></md-icon>
+                        <input ng-model="user.name" type="text" placeholder="Name" ng-required="true">
+                    </md-input-container>
+
+                    <md-input-container class="md-block">
+                        <md-icon md-svg-src="/images/icons/ic_phone_black_24px.svg"></md-icon>
+                        <input ng-model="user.phone" type="number" placeholder="Phone Number" ng-required="true">
+                    </md-input-container>
+
+                    <md-input-container class="md-block">
+                        <!-- Use floating placeholder instead of label -->
+                        <md-icon md-svg-src="/images/icons/ic_email_black_24px.svg" class="email"></md-icon>
+                        <input ng-model="user.email" type="email" placeholder="Email (required)" ng-required="true">
+                    </md-input-container>
+
+                    <md-input-container md-no-float class="md-block">
+                        <md-icon md-svg-src="/images/icons/ic_place_black_24px.svg" style="display:inline-block;"></md-icon>
+                        <input ng-model="user.address" type="text" placeholder="Address">
+                    </md-input-container>
+                </md-content>
+
+                <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+                    <md-button class="md-raised md-primary" ng-click="pay()">Pay</md-button>
+                </section>
+            </div>
+
+        </div>
     </div>
 
 
