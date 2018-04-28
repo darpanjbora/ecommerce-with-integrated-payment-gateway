@@ -16,13 +16,42 @@ router.get('/', function(req, res, next) {
     res.render('index');
 });
 
+router.get('/sendmail', function(req, res, next) {
+
+    let transporter = nodemailer.createTransport({
+        service: 'gmail',
+        secure: false,
+        port: 25,
+        auth: {
+            user: process.env.EMAIL,
+            pass: process.env.PASS
+        },
+        tls: {
+            rejectUnauthorized: false
+        }
+    });
+
+    let HelperOptions = {
+        from: '"COURSE STORE" <no-reply@coursestore.com>',
+        to: req.query.email,
+        subject: 'Thank you for purchasing the course!',
+        text: 'Your payment for the course is successful! Your invoice id is 123456789. Thank you'
+    };
+
+    transporter.sendMail(HelperOptions, (error, info) => {
+        if (error) {
+            console.log(error);
+        }
+        res.redirect('/');
+    });
+});
+
 router.get('/:id/payment', function(req, res, next) {
     var id = req.params.id;
     res.render('payment', { id: id });
 });
 
 router.get('/success', function(req, res, next) {
-
 
     const payerId = req.query.PayerID;
     const paymentId = req.query.paymentId;
@@ -51,16 +80,14 @@ router.post('/pay', function(req, res, next) {
 
     var userDetails = req.body
 
-    console.log(userDetails);
-
     var create_payment_json = {
         "intent": "sale",
         "payer": {
             "payment_method": "paypal"
         },
         "redirect_urls": {
-            "return_url": "https://course-store.herokuapp.com/success",
-            "cancel_url": "https://course-store.herokuapp.com/"
+            "return_url": "http://localhost:3000/success",
+            "cancel_url": "http://localhost:3000/"
         },
         "transactions": [{
             "item_list": {

@@ -9,12 +9,6 @@ angular.module('mainApp', ['ngMaterial', 'ngMessages'])
 
 function AppCtrl($scope, $mdToast, $mdDialog, $window, $http) {
 
-    $scope.imagePath = 'images/washedout.png';
-
-    $scope.currentNavItem = 'page2';
-
-    $scope.goto = function(page) {};
-
     $scope.user = {
         name: '',
         email: '',
@@ -22,28 +16,40 @@ function AppCtrl($scope, $mdToast, $mdDialog, $window, $http) {
         address: ''
     };
 
-    $scope.pay = function(course) {
+    $scope.imagePath = 'images/washedout.png';
 
-        var userDetails = {
-            name: $scope.user.name,
-            email: $scope.user.email,
-            phone: $scope.user.phone,
-            address: $scope.user.address
-        }
+    $scope.currentNavItem = 'page2';
 
-        $http({
-            url: 'https://course-store.herokuapp.com/pay',
-            method: 'POST',
-            data: userDetails,
-            withCredentials: true,
-            headers: {
-                'Content-Type': 'application/json; charset=utf-8'
-            }
-        }).then(function(httpResponse) {
-            console.log('response:', httpResponse);
-        })
+    $scope.goto = function(page) {};
 
-    }
+    $scope.sendMail = function(ev) {
+        // Appending dialog to document.body to cover sidenav in docs app
+        var confirm = $mdDialog.prompt()
+            .title('Get Receipt')
+            .textContent('Enter your email address here')
+            .placeholder('Email ID')
+            .ariaLabel('Email ID')
+            .targetEvent(ev)
+            .required(true)
+            .ok('Send')
+            .cancel("I don't need the receipt");
+
+        $mdDialog.show(confirm).then(function(result) {
+            // $http({
+            //     method: "POST",
+            //     url: "/sendmail",
+            //     data: result
+            // }).then(function(response) {
+            //     console.log(response.data);
+            // }, function(response) {
+            //     console.log(response);
+            // });
+            $window.location.href = '/sendmail?email=' + result;
+        }, function() {
+            console.log(result);
+        });
+    };
+
 
     $scope.buy = function(course) {
         console.log(course);
