@@ -2,12 +2,15 @@ var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
+var mongoose = require('mongoose');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 
 var app = express();
+var configDB = require('./config.js');
+mongoose.connect(configDB.url);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

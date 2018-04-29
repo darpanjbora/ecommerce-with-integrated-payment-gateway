@@ -9,6 +9,18 @@ angular.module('mainApp', ['ngMaterial', 'ngMessages'])
 
 function AppCtrl($scope, $mdToast, $mdDialog, $window, $http) {
 
+    this.onInit = function() {
+        $http({
+            method: "GET",
+            url: "/getcourse"
+        }).then(function(response) {
+            $scope.courses = response.data;
+            console.log(response.data);
+        }, function(response) {
+            console.log(response);
+        });
+    }
+
     $scope.user = {
         name: '',
         email: '',
@@ -35,15 +47,6 @@ function AppCtrl($scope, $mdToast, $mdDialog, $window, $http) {
             .cancel("I don't need the receipt");
 
         $mdDialog.show(confirm).then(function(result) {
-            // $http({
-            //     method: "POST",
-            //     url: "/sendmail",
-            //     data: result
-            // }).then(function(response) {
-            //     console.log(response.data);
-            // }, function(response) {
-            //     console.log(response);
-            // });
             $window.location.href = '/sendmail?email=' + result;
         }, function() {
             console.log(result);
@@ -73,4 +76,6 @@ function AppCtrl($scope, $mdToast, $mdDialog, $window, $http) {
             .hideDelay(3000)
         );
     };
+
+    this.onInit();
 }

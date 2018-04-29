@@ -38,179 +38,31 @@
 
         <!-- COURSES DETAILS HERE -->
 
-        <md-content class="md-padding " layout-xs="row " layout="column ">
-            <div flex-xs flex-gt-xs="30 " layout="row ">
-
-
-                <!-- COURSE 1 -->
-                <md-card>
+        <md-content class="md-padding " layout-xs="row" layout="column">
+            <div class='md-padding' layout="row" layout-wrap>
+                <md-card flex-xs flex-gt-xs="30" ng-repeat="course in courses">
                     <img ng-src="{{imagePath}} " class="md-card-image " alt="Course Image ">
                     <md-card-title>
                         <md-card-title-text>
-                            <span class="md-headline ">Course 1</span>
-                            <h3><i class="fa fa-inr"></i> 1.00</h3>
+                            <span class="md-headline ">{{course.courseName}}</span>
+                            <h3>{{course.coursePrice | currency : "INR" }}</h3>
                         </md-card-title-text>
                     </md-card-title>
                     <md-card-content>
-                        <p>
-                            Make best use of your engineering years by learning the skills you always wanted to. With our program, now you can learn anytime, anywhere, any course you want from our extensive list of programming related courses.
-                        </p>
+                        <p>{{course.courseDescription}}</p>
                     </md-card-content>
                     <md-card-actions layout="row " layout-align="end center ">
-                        <md-button class="md-icon-button " aria-label="Buy " ng-click="buy(100)">
+                        <md-button class="md-icon-button " aria-label="Buy " ng-click="buy(course.courseId)">
                             <md-icon md-svg-icon="images/icons/shopping-cart.svg "></md-icon>
                         </md-button>
-                        <md-button class="md-icon-button " aria-label="Like " ng-click="like('course1')">
+                        <md-button class="md-icon-button " aria-label="Like " ng-click="like(course.courseName)">
                             <md-icon md-svg-icon="images/icons/like.svg "></md-icon>
                         </md-button>
-                        <md-button class="md-icon-button " aria-label="Share " ng-click="share('course1')">
+                        <md-button class="md-icon-button " aria-label="Share " ng-click="share(course.courseName)">
                             <md-icon md-svg-icon="images/icons/share.svg "></md-icon>
                         </md-button>
                     </md-card-actions>
                 </md-card>
-
-
-                <!-- COURSE 2 -->
-                <md-card>
-                    <img ng-src="{{imagePath}} " class="md-card-image " alt="Washed Out ">
-                    <md-card-title>
-                        <md-card-title-text>
-                            <span class="md-headline ">Course 2</span>
-                            <h3><i class="fa fa-inr"></i> 1.00</h3>
-                        </md-card-title-text>
-                    </md-card-title>
-                    <md-card-content>
-                        <p>
-                            Make best use of your engineering years by learning the skills you always wanted to. With our program, now you can learn anytime, anywhere, any course you want from our extensive list of programming related courses.
-                        </p>
-                    </md-card-content>
-                    <md-card-actions layout="row " layout-align="end center ">
-                        <md-button class="md-icon-button " aria-label="Buy " ng-click="buy(200)">
-                            <md-icon md-svg-icon="images/icons/shopping-cart.svg "></md-icon>
-                        </md-button>
-                        <md-button class="md-icon-button " aria-label="Like " ng-click="like('course2')">
-                            <md-icon md-svg-icon="images/icons/like.svg "></md-icon>
-                        </md-button>
-                        <md-button class="md-icon-button " aria-label="Share " ng-click="share('course2')">
-                            <md-icon md-svg-icon="images/icons/share.svg "></md-icon>
-                        </md-button>
-                    </md-card-actions>
-                </md-card>
-
-
-                <!-- COURSE 3 -->
-                <md-card>
-                    <img ng-src="{{imagePath}} " class="md-card-image " alt="Washed Out ">
-                    <md-card-title>
-                        <md-card-title-text>
-                            <span class="md-headline ">Course 3</span>
-                            <h3><i class="fa fa-inr"></i> 1.00</h3>
-                        </md-card-title-text>
-                    </md-card-title>
-                    <md-card-content>
-                        <p>
-                            Make best use of your engineering years by learning the skills you always wanted to. With our program, now you can learn anytime, anywhere, any course you want from our extensive list of programming related courses.
-                        </p>
-                    </md-card-content>
-                    <md-card-actions layout="row " layout-align="end center ">
-                        <md-button class="md-icon-button " aria-label="Buy " ng-click="buy(300)">
-                            <md-icon md-svg-icon="images/icons/shopping-cart.svg "></md-icon>
-                        </md-button>
-                        <md-button class="md-icon-button " aria-label="Like " ng-click="like('course3')">
-                            <md-icon md-svg-icon="images/icons/like.svg "></md-icon>
-                        </md-button>
-                        <md-button class="md-icon-button " aria-label="Share " ng-click="share('course3')">
-                            <md-icon md-svg-icon="images/icons/share.svg "></md-icon>
-                        </md-button>
-                    </md-card-actions>
-                </md-card>
-
-            </div>
-            <div flex-xs flex-gt-xs="30 " layout="row ">
-
-
-                <!-- COURSE 4 -->
-                <md-card>
-                    <img ng-src="{{imagePath}} " class="md-card-image " alt="Washed Out ">
-                    <md-card-title>
-                        <md-card-title-text>
-                            <span class="md-headline ">Course 4</span>
-                            <h3><i class="fa fa-inr"></i> 1.00</h3>
-                        </md-card-title-text>
-                    </md-card-title>
-                    <md-card-content>
-                        <p>
-                            Make best use of your engineering years by learning the skills you always wanted to. With our program, now you can learn anytime, anywhere, any course you want from our extensive list of programming related courses.
-                        </p>
-                    </md-card-content>
-                    <md-card-actions layout="row " layout-align="end center ">
-                        <md-button class="md-icon-button " aria-label="Buy " ng-click="buy(400)">
-                            <md-icon md-svg-icon="images/icons/shopping-cart.svg "></md-icon>
-                        </md-button>
-                        <md-button class="md-icon-button " aria-label="Like " ng-click="like('course4')">
-                            <md-icon md-svg-icon="images/icons/like.svg "></md-icon>
-                        </md-button>
-                        <md-button class="md-icon-button " aria-label="Share " ng-click="share('course4')">
-                            <md-icon md-svg-icon="images/icons/share.svg "></md-icon>
-                        </md-button>
-                    </md-card-actions>
-                </md-card>
-
-                <!-- COURSE 5 -->
-                <md-card>
-                    <img ng-src="{{imagePath}} " class="md-card-image " alt="Washed Out ">
-                    <md-card-title>
-                        <md-card-title-text>
-                            <span class="md-headline ">Course 5</span>
-                            <h3><i class="fa fa-inr"></i> 1.00</h3>
-                        </md-card-title-text>
-                    </md-card-title>
-                    <md-card-content>
-                        <p>
-                            Make best use of your engineering years by learning the skills you always wanted to. With our program, now you can learn anytime, anywhere, any course you want from our extensive list of programming related courses.
-                        </p>
-                    </md-card-content>
-                    <md-card-actions layout="row " layout-align="end center ">
-                        <md-button class="md-icon-button " aria-label="Buy " ng-click="buy(500)">
-                            <md-icon md-svg-icon="images/icons/shopping-cart.svg "></md-icon>
-                        </md-button>
-                        <md-button class="md-icon-button " aria-label="Like " ng-click="like('course5')">
-                            <md-icon md-svg-icon="images/icons/like.svg "></md-icon>
-                        </md-button>
-                        <md-button class="md-icon-button " aria-label="Share " ng-click="share('course5')">
-                            <md-icon md-svg-icon="images/icons/share.svg "></md-icon>
-                        </md-button>
-                    </md-card-actions>
-                </md-card>
-
-                <!-- COURSE 6 -->
-                <md-card>
-                    <img ng-src="{{imagePath}} " class="md-card-image " alt="Washed Out ">
-                    <md-card-title>
-                        <md-card-title-text>
-                            <span class="md-headline ">Course 6</span>
-                            <h3><i class="fa fa-inr"></i> 1.00</h3>
-                        </md-card-title-text>
-                    </md-card-title>
-                    <md-card-content>
-                        <p>
-                            Make best use of your engineering years by learning the skills you always wanted to. With our program, now you can learn anytime, anywhere, any course you want from our extensive list of programming related courses.
-                        </p>
-                    </md-card-content>
-                    <md-card-actions layout="row " layout-align="end center ">
-                        <md-button class="md-icon-button " aria-label="Buy " ng-click="buy(600)">
-                            <md-icon md-svg-icon="images/icons/shopping-cart.svg "></md-icon>
-                        </md-button>
-                        <md-button class="md-icon-button " aria-label="Like " ng-click="like('course6')">
-                            <md-icon md-svg-icon="images/icons/like.svg "></md-icon>
-                        </md-button>
-                        <md-button class="md-icon-button " aria-label="Share " ng-click="share('course6')">
-                            <md-icon md-svg-icon="images/icons/share.svg "></md-icon>
-                        </md-button>
-                    </md-card-actions>
-                </md-card>
-
-
             </div>
         </md-content>
 

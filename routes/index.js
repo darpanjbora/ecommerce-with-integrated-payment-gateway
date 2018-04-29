@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var nodemailer = require('nodemailer');
 
+var config = require('../config');
+var course = require('../models/course-schema');
 var paypal = require('paypal-rest-sdk');
 
 paypal.configure({
@@ -11,11 +13,39 @@ paypal.configure({
 });
 
 
+
+/* GET courses. */
+router.get('/getcourse', function(req, res, next) {
+    course.getCourse(function(err, data) {
+        if (err) {
+            throw err;
+        }
+        res.json(data);
+    })
+})
+
+
+
+/* POST courses. */
+router.post('/postcourse', function(req, res, next) {
+    var data = JSON.parse(req.body.data);
+    course.postCourse(data, function(err, data) {
+        if (err) {
+            throw err;
+        }
+        res.json(data);
+    })
+})
+
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
     res.render('index');
 });
 
+
+
+/* GET route to send the payment receipt through mail. */
 router.get('/sendmail', function(req, res, next) {
 
     let transporter = nodemailer.createTransport({
@@ -46,11 +76,18 @@ router.get('/sendmail', function(req, res, next) {
     });
 });
 
+
+
+/* GET payment form for a particular course. */
 router.get('/:id/payment', function(req, res, next) {
     var id = req.params.id;
     res.render('payment', { id: id });
 });
 
+
+
+
+/* GET success page on successful payment and reflect changes to the paypal account. */
 router.get('/success', function(req, res, next) {
 
     const payerId = req.query.PayerID;
@@ -76,6 +113,10 @@ router.get('/success', function(req, res, next) {
     });
 })
 
+
+
+
+/* POST route to make payment. Redirects to paypal. */
 router.post('/pay', function(req, res, next) {
 
     var userDetails = req.body
