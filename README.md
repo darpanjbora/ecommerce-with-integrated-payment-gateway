@@ -7,7 +7,7 @@ An E-commerce website developed on the MEAN Stack with Paypal as the payment gat
 ## INSTALLATION 
 
 - Clone the repository `git clone https://github.com/darpanjbora/ecommerce-with-integrated-payment-gateway.git`
-- Install all dependecies `npm install`
+- Install all dependencies `npm install`
 - Start the server `npm start`
 
 ## TEST

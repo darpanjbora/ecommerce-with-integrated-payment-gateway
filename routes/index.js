@@ -127,8 +127,8 @@ router.post('/pay', function(req, res, next) {
             "payment_method": "paypal"
         },
         "redirect_urls": {
-            "return_url": "http://localhost:3000/success",
-            "cancel_url": "http://localhost:3000/"
+            "return_url": "https://course-store.herokuapp.com/success",
+            "cancel_url": "https://course-store.herokuapp.com/"
         },
         "transactions": [{
             "item_list": {
